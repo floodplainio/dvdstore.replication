@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joins>
+	<mongodb.sink name="replication">
+		<sink collection="Actor" topic="@Actor"/>
+		<sink collection="Customer" topic="@Customer"/>
+		<sink collection="Staff" topic="@Staff"/>
+		<sink collection="Store" topic="@Store"/>
+		<sink collection="Film" topic="@FilmWithCategory"/>
+		<sink collection="Rental" topic="DVDS-rental"/>
+		<sink collection="Inventory" topic="DVDS-inventory"/>
+	</mongodb.sink>
+	<!-- 
+	<elasticsearch.sink name="elastic">
+		<sink index="Actor" topic="@Actor"/>
+		<sink index="Customer" topic="@Customer"/>
+		<sink index="Staff" topic="@Staff"/>
+		<sink index="Store" topic="@Store"/>
+		<sink index="Film" topic="@FilmWithCategory"/>
+		<sink index="Rental" topic="DVDS-rental"/>
+		<sink index="Inventory" topic="DVDS-inventory"/>
+	</elasticsearch.sink>
+ 	-->
+	<elasticsearch.sink name="elastic">
+		<sink index="@DVD" topic="@Actor" type="Actor"/>
+		<sink index="@DVD" topic="@Customer" type="Customer"/>
+		<sink index="@DVD" topic="@Staff" type="Staff"/>
+		<sink index="@DVD" topic="@Store" type="Store"/>
+		<sink index="@DVD" topic="@FilmWithCategory" type="Film"/>
+		<sink index="@DVD" topic="DVDS-rental" type="Rental"/>
+		<sink index="@DVD" topic="DVDS-inventory" type="Inventory"/>
+	</elasticsearch.sink>
+	<!-- <neo4j.sink>
+		<sink index="@DVD" topic="DVDS-film_actor" type="Actor"/>
+	</neo4j.sink>
+	 -->
+	<direct>
+		<groupedStore name="citiesbycountry" from="DVDS-city" key="country_id"/>
+ 		<joinGrouped name="countrywithcity" from="citiesbycountry" with="DVDS-country" into="Country" optional="true" to="@CityWithCountry"/>
+
+		<groupedStore name="addressbycity" from="DVDS-address" key="city_id"/>
+ 		<joinGrouped name="addresswithcity" from="addressbycity" with="countrywithcity" into="City" optional="true" to="@AddressWithCity"/>
+
+		<groupedStore name="customerbyaddress" from="DVDS-customer" key="address_id"/>
+ 		<joinGrouped name="customerwithaddress" from="customerbyaddress" with="addresswithcity" into="Address" optional="true" to="@Customer"/>
+		
+		<groupedStore name="staffbyaddress" from="DVDS-staff" key="address_id"/>
+ 		<joinGrouped name="staffwithaddress" from="staffbyaddress" with="addresswithcity" into="Address" optional="true" to="@Staff"/>
+
+		<groupedStore name="storebyaddress" from="DVDS-store" key="address_id"/>
+ 		<joinGrouped name="storewithaddress" from="storebyaddress" with="addresswithcity" into="Address" optional="true" to="@Store"/>
+
+		<groupedStore name="filmactorbyactor" from="DVDS-film_actor" key="actor_id"/>
+ 		<joinGrouped name="filmactorwithactor" from="filmactorbyactor" with="DVDS-actor" into="Actor" optional="true" to="@FilmActorWithActor"/>
+
+		<groupedStore name="categorybycategory" from="DVDS-film_category" key="category_id"/>
+ 		<joinGrouped name="categorywithcategory" from="categorybycategory" with="DVDS-category" into="Category" optional="false" to="@Category"/>
+
+		<groupedStore name="filmactorbyfilm" from="filmactorwithactor" key="film_id"/>
+		<join name="filmactorwithfilm" from="DVDS-film" withList="filmactorbyfilm" into="Actors" optional="true"/>
+
+		<groupedStore name="categorybyfilm" from="categorywithcategory" key="film_id"/>
+ 		<joinGrouped name="filmwithcategory" from="filmactorwithfilm" with="categorybyfilm" into="Category" optional="true" to="@FilmWithCategory"/>
+
+	</direct>
+</joins>

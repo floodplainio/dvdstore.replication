@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joins>
+	<mongodb.sink>
+		<sink collection="Store" topic="@STORE"/>
+		<sink collection="Staff" topic="@STAFF"/>
+		<sink collection="Customer" topic="@CUSTOMER"/>
+		<sink collection="rawcity" topic="DVDS-city"/>
+	</mongodb.sink>
+	<direct>
+		<groupedStore name="citybycountry" from="DVDS-city" key="country_id"/>
+		<join name="citywithcountry" from="DVDS-country" with="citybycountry" into="country"/>
+		<groupedStore name="addressbycity" from="DVDS-address" key="city_id"/>
+   		<join name="addresswithcity" from="addressbycity" with="citywithcountry" into="City" optional="false"/>
+		<groupedStore name="storebyaddress" from="DVDS-store" key="address_id"/>
+		<join name="storewithaddress" from="storebyaddress" with="addresswithcity" to="store"/>
+
+		<groupedStore name="customerbyaddress" from="DVDS-customer" key="address_id"/>
+		<join name="customerwithaddress" from="customerbyaddress" with="addresswithcity" to="@CUSTOMER"/>
+
+		<groupedStore name="staffbyaddress" from="DVDS-staff" key="address_id"/>
+		<join name="staffwithaddress" from="staffbyaddress" with="addresswithcity" to="@STAFF"/>
+
+	</direct>
+	
+</joins>
