@@ -12,8 +12,8 @@
 <mapEntry key="FILE_REPOSITORY_MONITORED" value="streams"/>
 <mapEntry key="FILE_REPOSITORY_PATH" value="${project_loc:dvdstore.replication}"/>
 <mapEntry key="FILE_REPOSITORY_TYPE" value="streams"/>
-<mapEntry key="FILTER_INSTANCES" value="addressbase,clubinstances"/>
-<mapEntry key="GENERATION" value="11"/>
+<mapEntry key="FILTER_INSTANCES" value="address,clubinstances"/>
+<mapEntry key="GENERATION" value="12"/>
 <mapEntry key="HAZELCAST_SIMPLE" value="true"/>
 <mapEntry key="INSTANCENAME" value="instance-1"/>
 <mapEntry key="KAFKA_STREAMS_DISABLECACHE" value="true"/>
