@@ -6,11 +6,13 @@
 		<sink collection="Customer" topic="@CUSTOMER"/>
 		<sink collection="Address" topic="@ADDRESS"/>
 	</mongodb.sink>
-	<elasticsearch.sink name="elastic">
+<!--
+ 	<elasticsearch.sink name="elastic">
 		<sink index="@DVD" topic="@CUSTOMER" type="Customer"/>
 		<sink index="@DVD" topic="@STAFF" type="Staff"/>
 		<sink index="@DVD" topic="@STORE" type="Store"/>
 	</elasticsearch.sink>
+ -->
 	<direct>
 		<groupedStore name="citybycountry" from="DVDS-city" key="country_id"/>
 		<joinGrouped name="citywithcountry" from="citybycountry" with="DVDS-country" columns="country" to="@CitiesWithCountry" optional="true"/>

@@ -19,7 +19,6 @@
 		<sink index="Rental" topic="DVDS-rental"/>
 		<sink index="Inventory" topic="DVDS-inventory"/>
 	</elasticsearch.sink>
- 	-->
 	<elasticsearch.sink name="elastic">
 		<sink index="@DVD" topic="@Actor" type="Actor"/>
 		<sink index="@DVD" topic="@Customer" type="Customer"/>
@@ -29,6 +28,7 @@
 		<sink index="@DVD" topic="DVDS-rental" type="Rental"/>
 		<sink index="@DVD" topic="DVDS-inventory" type="Inventory"/>
 	</elasticsearch.sink>
+ 	-->
 	<!-- <neo4j.sink>
 		<sink index="@DVD" topic="DVDS-film_actor" type="Actor"/>
 	</neo4j.sink>
