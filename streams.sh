@@ -9,7 +9,7 @@ ENV="-e TZ=Europe/Amsterdam \
      -e KAFKA_STREAMS_THREADCOUNT=1\
      -e GIT_REPOSITORY_TYPE=any\
      -e GIT_REPOSITORY_FILEINSTALL=etc\
-     -e GIT_REPOSITORY_DEPLOYMENT=develop\
+     -e GIT_REPOSITORY_DEPLOYMENT=test\
      -e GIT_REPOSITORY_URL=https://github.com/flyaruu/dvdstore.replication\
      -e GIT_REPOSITORY_TOKEN=269a5808444240eca76d1aff8e485cb8d605dd0c\
      -e GIT_REPOSITORY_SLEEPTIME=60000\
