@@ -5,7 +5,7 @@ ENV="-e TZ=Europe/Amsterdam \
      -e NO_REDIS=true \
      -e CONTAINERNAME=test-stream-replication-1 \
      -e INSTANCENAME=test-stream-replication-1 \
-     -e CONTAINER=dexels/navajo-bare:3.2.7 \
+     -e CONTAINER=${CONTAINER} \
      -e KAFKA_STREAMS_THREADCOUNT=1\
      -e GIT_REPOSITORY_TYPE=any\
      -e GIT_REPOSITORY_FILEINSTALL=etc\
@@ -18,6 +18,7 @@ ENV="-e TZ=Europe/Amsterdam \
      -e REPLICATION_MESSAGE_FORMAT=PROTOBUF\
      -e CLUSTER_USE_DEFAULT_CLASSLOADER=true\
      -e LOGLEVEL=INFO\
+     -e LOGAPPENDERS="stdout,out"\
      -e TENANT_MASTER=DVDSTORE\
      -e TOPIC_PARTITION_COUNT=1\
      -e GIT_REPOSITORY_BRANCH=master\
