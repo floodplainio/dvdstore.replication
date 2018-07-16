@@ -38,6 +38,6 @@ echo "Starting $CONTAINER as $NAME... "
 echo "Expecting host: $EXPOSEDHOST"
 docker rm $NAME 2>/dev/null
 VOLUMES_FROM=""
-docker run --rm --name $NAME ${LINK} ${VOLUMES_FROM} ${VOLUMES} ${PORTMAPPINGS} ${ENV} ${SETTINGS} -i -t ${CONTAINER} ${PARAMETERS}
+docker run  --network=replication-demo_default--rm --name $NAME ${LINK} ${VOLUMES_FROM} ${VOLUMES} ${PORTMAPPINGS} ${ENV} ${SETTINGS} -i -t ${CONTAINER} ${PARAMETERS}
 RETVAL=$?
 exit $RETVAL
