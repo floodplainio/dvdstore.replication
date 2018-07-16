@@ -19,6 +19,8 @@
 		<sink index="Rental" topic="DVDS-rental"/>
 		<sink index="Inventory" topic="DVDS-inventory"/>
 	</elasticsearch.sink>
+ 	-->
+
 	<elasticsearch.sink name="elastic">
 		<sink index="@DVD" topic="@Actor" type="Actor"/>
 		<sink index="@DVD" topic="@Customer" type="Customer"/>
@@ -28,26 +30,11 @@
 		<sink index="@DVD" topic="DVDS-rental" type="Rental"/>
 		<sink index="@DVD" topic="DVDS-inventory" type="Inventory"/>
 	</elasticsearch.sink>
- 	-->
 	<!-- <neo4j.sink>
 		<sink index="@DVD" topic="DVDS-film_actor" type="Actor"/>
 	</neo4j.sink>
 	 -->
 	<direct>
-		<groupedStore name="citiesbycountry" from="DVDS-city" key="country_id"/>
- 		<joinGrouped name="countrywithcity" from="citiesbycountry" with="DVDS-country" into="Country" optional="true" to="@CityWithCountry"/>
-
-		<groupedStore name="addressbycity" from="DVDS-address" key="city_id"/>
- 		<joinGrouped name="addresswithcity" from="addressbycity" with="countrywithcity" into="City" optional="true" to="@AddressWithCity"/>
-
-		<groupedStore name="customerbyaddress" from="DVDS-customer" key="address_id"/>
- 		<joinGrouped name="customerwithaddress" from="customerbyaddress" with="addresswithcity" into="Address" optional="true" to="@Customer"/>
-		
-		<groupedStore name="staffbyaddress" from="DVDS-staff" key="address_id"/>
- 		<joinGrouped name="staffwithaddress" from="staffbyaddress" with="addresswithcity" into="Address" optional="true" to="@Staff"/>
-
-		<groupedStore name="storebyaddress" from="DVDS-store" key="address_id"/>
- 		<joinGrouped name="storewithaddress" from="storebyaddress" with="addresswithcity" into="Address" optional="true" to="@Store"/>
 
 		<groupedStore name="filmactorbyactor" from="DVDS-film_actor" key="actor_id"/>
  		<joinGrouped name="filmactorwithactor" from="filmactorbyactor" with="DVDS-actor" into="Actor" optional="true" to="@FilmActorWithActor"/>
