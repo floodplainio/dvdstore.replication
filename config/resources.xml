@@ -2,12 +2,10 @@
 <resources tenants="KNVB">
 	<deployment name="test" kafka="kafka:9092" zookeeper="zookeeper:2181">
 		<mongodb.sink name="replication" host="mongo" port="27017" database="@total:dvdstore"/>
- 		<elasticsearch.sink name="elastic" url="elasticsearch:9200"/>
-	<!--	<graph.sink name="graph" url="http://localhost:7474" database="dvd"/> -->
+ 		<elasticsearch.sink name="elastic" url="http://elasticsearch:9200"/>
 	</deployment>
-	<deployment name="fromlocal" kafka="replication-demo.dexels.com:9092" zookeeper="replication-demo.dexels.com:2181">
+<!--	<deployment name="test" kafka="replication-demo.dexels.com:9092" zookeeper="replication-demo.dexels.com:2181">
 		<mongodb.sink name="replication" host="replication-demo.dexels.com" port="27017" database="@total:dvdstore"/>
- 		<elasticsearch.sink name="elastic" url="replication-demo.dexels.com:9200"/>
-	<!--	<graph.sink name="graph" url="http://localhost:7474" database="dvd"/> -->
-	</deployment>
+ 		<elasticsearch.sink name="elastic" url="http://replication-demo.dexels.com:9200"/>
+	</deployment>-->
 </resources>
