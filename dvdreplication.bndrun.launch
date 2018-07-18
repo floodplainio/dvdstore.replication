@@ -7,13 +7,13 @@
 <mapEntry key="CLUSTER" value="development_${env_var:USER}${env_var:USERNAME}"/>
 <mapEntry key="CLUSTER_USE_DEFAULT_CLASSLOADER" value="true"/>
 <mapEntry key="ENABLE_TENANTLESS" value="true"/>
-<mapEntry key="FILE_REPOSITORY_DEPLOYMENT" value="fromlocal"/>
+<mapEntry key="FILE_REPOSITORY_DEPLOYMENT" value="test"/>
 <mapEntry key="FILE_REPOSITORY_FILEINSTALL" value="etc"/>
 <mapEntry key="FILE_REPOSITORY_MONITORED" value="streams"/>
 <mapEntry key="FILE_REPOSITORY_PATH" value="${project_loc:dvdstore.replication}"/>
 <mapEntry key="FILE_REPOSITORY_TYPE" value="streams"/>
-<mapEntry key="FILTER_INSTANCES" value=""/>
-<mapEntry key="GENERATION" value="13"/>
+<mapEntry key="FILTER_INSTANCES" value="simple"/>
+<mapEntry key="GENERATION" value="14"/>
 <mapEntry key="HAZELCAST_SIMPLE" value="true"/>
 <mapEntry key="INSTANCENAME" value="instance-1"/>
 <mapEntry key="KAFKA_STREAMS_DISABLECACHE" value="true"/>

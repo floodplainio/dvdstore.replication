@@ -12,7 +12,7 @@ ENV="-e TZ=Europe/Amsterdam \
      -e GIT_REPOSITORY_DEPLOYMENT=test\
      -e GIT_REPOSITORY_URL=https://github.com/flyaruu/dvdstore.replication\
      -e GIT_REPOSITORY_TOKEN=269a5808444240eca76d1aff8e485cb8d605dd0c\
-     -e GIT_REPOSITORY_SLEEPTIME=60000\
+     -e GIT_REPOSITORY_SLEEPTIME=3600000\
      -e GIT_REPOSITORY_GITHUB=true\
      -e TOPIC_REPLICATION_COUNT=1\
      -e REPLICATION_MESSAGE_FORMAT=JSON\
@@ -22,7 +22,7 @@ ENV="-e TZ=Europe/Amsterdam \
      -e TENANT_MASTER=DVDSTORE\
      -e TOPIC_PARTITION_COUNT=1\
      -e GIT_REPOSITORY_BRANCH=master\
-     -e GENERATION=7\
+     -e GENERATION=1\
      -e startflags=-Xmx1000m\
      -e KAFKA_STREAMS_DISABLECACHE=True\
      -e REPARTITION_FORCE_LOGAPPENDTIME=True\
