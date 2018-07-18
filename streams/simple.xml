@@ -8,8 +8,8 @@
 	</mongodb.sink>
 
 	<elasticsearch.sink name="elastic">
-		<sink index="@DVD" topic="DVDS-actor" type="Actor"/>
-		<sink index="@DVD" topic="@FilmWithCategory" type="Film"/>
+		<sink index="Actor" topic="DVDS-actor" type="Actor"/>
+		<sink index="Film" topic="@FilmWithCategory" type="Film"/>
 	</elasticsearch.sink>
 <!-- 	
 	<neo4j.sink>

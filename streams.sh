@@ -22,7 +22,7 @@ ENV="-e TZ=Europe/Amsterdam \
      -e TENANT_MASTER=DVDSTORE\
      -e TOPIC_PARTITION_COUNT=1\
      -e GIT_REPOSITORY_BRANCH=master\
-     -e GENERATION=2\
+     -e GENERATION=3\
      -e startflags=-Xmx1000m\
      -e KAFKA_STREAMS_DISABLECACHE=True\
      -e REPARTITION_FORCE_LOGAPPENDTIME=True\
