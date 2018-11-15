@@ -4,19 +4,19 @@
 		<sink collection="Store" topic="@STORE"/>
 		<sink collection="Staff" topic="@STAFF"/>
 		<sink collection="Customer" topic="@CUSTOMER"/>
-		<sink collection="Address" topic="@ADDRESS"/>
 	</mongodb.sink>
- 	<elasticsearch.sink name="elastic">
-		<sink index="@DVD" topic="@CUSTOMER" type="Customer"/>
-		<sink index="@DVD" topic="@STAFF" type="Staff"/>
-		<sink index="@DVD" topic="@STORE" type="Store"/>
+<!--<elasticsearch.sink name="elastic">
+		<sink index="Customer" topic="@CUSTOMER" type="Customer"/>
+		<sink index="Staff" topic="@STAFF" type="Staff"/>
+		<sink index="Store" topic="@STORE" type="Store"/>
 	</elasticsearch.sink>
+	 -->
 	<direct>
 		<groupedStore name="citybycountry" from="DVDS-city" key="country_id"/>
-		<joinGrouped name="citywithcountry" from="citybycountry" with="DVDS-country" columns="country" to="@CitiesWithCountry" optional="true"/>
+		<joinGrouped name="citywithcountry" from="citybycountry" with="DVDS-country" columns="country" to="@CitiesWithCountry"/>
 
 		<groupedStore name="addressbycity" from="DVDS-address" key="city_id"/>
-   		<joinGrouped name="addresswithcity" from="addressbycity" with="citywithcountry" columns="country,city" optional="false" to="@ADDRESS"/>
+   		<joinGrouped name="addresswithcity" from="addressbycity" with="citywithcountry" columns="country,city"/>
 
 		<groupedStore name="storebyaddress" from="DVDS-store" key="address_id"/>
 		<joinGrouped name="storewithaddress" from="storebyaddress" with="addresswithcity" to="@STORE"/>
@@ -26,7 +26,5 @@
 
 		<groupedStore name="staffbyaddress" from="DVDS-staff" key="address_id"/>
 		<joinGrouped name="staffwithaddress" from="staffbyaddress" with="addresswithcity" to="@STAFF"/>
-
 	</direct>
-	
 </joins>

@@ -6,12 +6,12 @@
 		<sink collection="Rental" topic="DVDS-rental"/>
 		<sink collection="Inventory" topic="DVDS-inventory"/>
 	</mongodb.sink>
-
-	<elasticsearch.sink name="elastic">
+<!-- 	
+	<elasticsearchdirect.sink name="elastic">
 		<sink index="Actor" topic="DVDS-actor" type="Actor"/>
 		<sink index="Film" topic="@FilmWithCategory" type="Film"/>
-	</elasticsearch.sink>
-<!-- 	
+	</elasticsearchdirect.sink>
+
 	<neo4j.sink>
 		<sink database="@DVD" topic="DVDS-actor" labels="Actor" type="node"/>
 		<sink database="@DVD" topic="DVDS-film" labels="Film" type="node"/>
