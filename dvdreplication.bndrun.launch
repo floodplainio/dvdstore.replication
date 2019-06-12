@@ -6,20 +6,19 @@
     <mapAttribute key="org.eclipse.debug.core.environmentVariables">
         <mapEntry key="CLUSTER" value="development_${env_var:USER}${env_var:USERNAME}"/>
         <mapEntry key="CLUSTER_USE_DEFAULT_CLASSLOADER" value="true"/>
-        <mapEntry key="DIRECT_SINK" value="false"/>
+        <mapEntry key="DIRECT_SINK" value="true"/>
         <mapEntry key="ENABLE_TENANTLESS" value="true"/>
         <mapEntry key="FILE_REPOSITORY_DEPLOYMENT" value="test"/>
         <mapEntry key="FILE_REPOSITORY_FILEINSTALL" value="etc"/>
         <mapEntry key="FILE_REPOSITORY_MONITORED" value="streams"/>
         <mapEntry key="FILE_REPOSITORY_PATH" value="${project_loc:dvdstore.replication}"/>
         <mapEntry key="FILE_REPOSITORY_TYPE" value="streams"/>
-        <mapEntry key="FILTER_INSTANCES" value="clubinstances,simple"/>
-        <mapEntry key="GENERATION" value="7x"/>
+        <mapEntry key="FILTER_INSTANCES" value="simple,splitdebezium"/>
+        <mapEntry key="GENERATION" value="voxxed2"/>
         <mapEntry key="HAZELCAST_SIMPLE" value="true"/>
         <mapEntry key="INSTANCENAME" value="instance-1"/>
         <mapEntry key="KAFKA_STREAMS_DISABLECACHE" value="true"/>
         <mapEntry key="KAFKA_STREAMS_THREADCOUNT" value="1"/>
-        <mapEntry key="PRETTY_JSON" value="true"/>
         <mapEntry key="REPLICATION_MESSAGE_FORMAT" value="JSON"/>
         <mapEntry key="SIMPLE_START" value="true"/>
         <mapEntry key="TENANT_MASTER" value="MOCKUP"/>

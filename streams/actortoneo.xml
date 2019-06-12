@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joins>
+	<neo4j.sink name="neo">
+		<sink database="@DVD" topic="DVDS-actor" labels="Actor" type="node"/>
+	</neo4j.sink>
+
+</joins>

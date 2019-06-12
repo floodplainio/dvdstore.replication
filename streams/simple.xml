@@ -6,19 +6,14 @@
 		<sink collection="Rental" topic="DVDS-rental"/>
 		<sink collection="Inventory" topic="DVDS-inventory"/>
 	</mongodb.sink>
-<!-- 	
-	<elasticsearchdirect.sink name="elastic">
-		<sink index="Actor" topic="DVDS-actor" type="Actor"/>
-		<sink index="Film" topic="@FilmWithCategory" type="Film"/>
-	</elasticsearchdirect.sink>
 
-	<neo4j.sink>
-		<sink database="@DVD" topic="DVDS-actor" labels="Actor" type="node"/>
-		<sink database="@DVD" topic="DVDS-film" labels="Film" type="node"/>
-		<sink database="@DVD" topic="DVDS-film_actor" labels="FEATURES" type="relation" fromLabel="Film" toLabel="Actor" fromId="film_id" toId="actor_id"/>
-		<sink database="@DVD" topic="DVDS-film_category" labels="IS_CATEGORY" type="relation" fromLabel="Film" toLabel="Category" fromId="film_id" toId="category_id"/>
-	</neo4j.sink>
-	 -->
+	<neo4j.sink name="neo">
+		<sink topic="DVDS-actor" labels="Actor" type="node"/>
+		<sink topic="DVDS-film" labels="Film" type="node"/>
+		<sink topic="DVDS-film" labels="Film" type="node"/>
+ 		<sink topic="DVDS-film_actor" labels="PLAYS_IN" type="relation" fromLabel="Film" toLabel="Actor" fromId="film_id" toId="actor_id"/>
+    </neo4j.sink>
+
 	<direct>
 
 		<groupedStore name="filmactorbyactor" from="DVDS-film_actor" key="actor_id"/>
