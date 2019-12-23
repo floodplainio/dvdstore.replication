@@ -11,7 +11,7 @@ ENV="-e TZ=Europe/Amsterdam \
      -e GIT_REPOSITORY_FILEINSTALL=etc\
      -e GIT_REPOSITORY_DEPLOYMENT=test\
      -e GIT_REPOSITORY_URL=https://github.com/flyaruu/dvdstore.replication\
-     -e GIT_REPOSITORY_TOKEN=269a5808444240eca76d1aff8e485cb8d605dd0c\
+     -e GIT_REPOSITORY_TOKEN=${GIT_REPOSITORY_TOKEN}\
      -e GIT_REPOSITORY_SLEEPTIME=3600000\
      -e GIT_REPOSITORY_GITHUB=true\
      -e TOPIC_REPLICATION_COUNT=1\

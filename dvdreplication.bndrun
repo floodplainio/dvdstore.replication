@@ -80,6 +80,7 @@
 	org.objectweb.asm.tree.analysis;version=7.0.0,\
 	org.objectweb.asm.util;version=7.0.0,\
 	org.apache.felix.webconsole;version=4.3.8,\
-	com.sun.activation.javax.activation;version=1.2.0
+	com.sun.activation.javax.activation;version=1.2.0,\
+	osgi.promise
 -runvm: -Xmx3000M -Dorg.ops4j.pax.logging.DefaultServiceLog.level=INFO -Dorg.osgi.service.http.port=8081 
 -runproperties: org.osgi.framework.system.packages.extra=com.yourkit.*,org.osgi.dto.*
