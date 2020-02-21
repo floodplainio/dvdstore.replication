@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <joins>
 	<mongodb.sink name="replication">
-		<sink collection="Actor" topic="DVDS-actor"/>
+		<sink collection="Actor" topic="actor"/>
 		<sink collection="Film" topic="@FilmWithCategory"/>
-		<sink collection="Rental" topic="DVDS-rental"/>
-		<sink collection="Inventory" topic="DVDS-inventory"/>
+		<sink collection="Rental" topic="rental"/>
+		<sink collection="Inventory" topic="inventory"/>
 	</mongodb.sink>
 
 	<neo4j.sink name="neo">
-		<sink topic="DVDS-actor" labels="Actor" type="node"/>
-		<sink topic="DVDS-film" labels="Film" type="node"/>
-		<sink topic="DVDS-film" labels="Film" type="node"/>
- 		<sink topic="DVDS-film_actor" labels="PLAYS_IN" type="relation" fromLabel="Film" toLabel="Actor" fromId="film_id" toId="actor_id"/>
+		<sink topic="actor" labels="Actor" type="node"/>
+		<sink topic="film" labels="Film" type="node"/>
+		<sink topic="film" labels="Film" type="node"/>
+ 		<sink topic="film_actor" labels="PLAYS_IN" type="relation" fromLabel="Film" toLabel="Actor" fromId="film_id" toId="actor_id"/>
     </neo4j.sink>
 
 	<direct>
 
-		<groupedStore name="filmactorbyactor" from="DVDS-film_actor" key="actor_id"/>
- 		<joinGrouped name="filmactorwithactor" from="filmactorbyactor" with="DVDS-actor" into="Actor" optional="true" to="@FilmActorWithActor"/>
+		<groupedStore name="filmactorbyactor" from="film_actor" key="actor_id"/>
+ 		<joinGrouped name="filmactorwithactor" from="filmactorbyactor" with="actor" into="Actor" optional="true" to="@FilmActorWithActor"/>
 
-		<groupedStore name="categorybycategory" from="DVDS-film_category" key="category_id"/>
- 		<joinGrouped name="categorywithcategory" from="categorybycategory" with="DVDS-category" into="Category" optional="false" to="@Category"/>
+		<groupedStore name="categorybycategory" from="film_category" key="category_id"/>
+ 		<joinGrouped name="categorywithcategory" from="categorybycategory" with="category" into="Category" optional="false" to="@Category"/>
 
 		<groupedStore name="filmactorbyfilm" from="filmactorwithactor" key="film_id"/>
-		<join name="filmactorwithfilm" from="DVDS-film" withList="filmactorbyfilm" into="Actors" optional="true"/>
+		<join name="filmactorwithfilm" from="film" withList="filmactorbyfilm" into="Actors" optional="true"/>
 
 		<groupedStore name="categorybyfilm" from="categorywithcategory" key="film_id"/>
  		<joinGrouped name="filmwithcategory" from="filmactorwithfilm" with="categorybyfilm" into="Category" optional="true" to="@FilmWithCategory"/>

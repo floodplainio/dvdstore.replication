@@ -1,0 +1,23 @@
+|>database(resource='dvd',schema='public',table='address')
+	->set(last_update=null)
+	->joinRemote(key=ToString([city_id]),
+		|>database(resource='dvd',schema='public',table='city')
+			->set(last_update=null)
+			->joinRemote(key=ToString([country_id]),
+				|>database(resource='dvd',schema='public',table='country')
+				)
+			->set(countryname=[@country])
+		)
+	->set(cityname=[@city],countryname=[@countryname])
+    ->sink(connector='replication',collection='address', '@ADDRESS')
+ 
+|>topic('@ADDRESS')
+    ->sink(connector='replication',collection='otheraddress', '@OTHERADDRESS')
+
+|>database(resource='dvd',schema='public',table='customer')
+	->joinRemote(key=ToString([address_id]),
+		|>topic('@ADDRESS')
+		)
+	->set(address=[@/])
+    ->sink(connector='replication',collection='customer', '@CUSTOMER')
+   

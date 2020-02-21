@@ -12,19 +12,19 @@
 	</elasticsearch.sink>
 	 -->
 	<direct>
-		<groupedStore name="citybycountry" from="DVDS-city" key="country_id"/>
-		<joinGrouped name="citywithcountry" from="citybycountry" with="DVDS-country" columns="country" to="@CitiesWithCountry"/>
+		<groupedStore name="citybycountry" from="city" key="country_id"/>
+		<joinGrouped name="citywithcountry" from="citybycountry" with="country" columns="country" to="@CitiesWithCountry"/>
 
-		<groupedStore name="addressbycity" from="DVDS-address" key="city_id"/>
+		<groupedStore name="addressbycity" from="address" key="city_id"/>
    		<joinGrouped name="addresswithcity" from="addressbycity" with="citywithcountry" columns="country,city"/>
 
-		<groupedStore name="storebyaddress" from="DVDS-store" key="address_id"/>
+		<groupedStore name="storebyaddress" from="store" key="address_id"/>
 		<joinGrouped name="storewithaddress" from="storebyaddress" with="addresswithcity" to="@STORE"/>
 
-		<groupedStore name="customerbyaddress" from="DVDS-customer" key="address_id"/>
+		<groupedStore name="customerbyaddress" from="customer" key="address_id"/>
 		<joinGrouped name="customerwithaddress" from="customerbyaddress" with="addresswithcity" to="@CUSTOMER"/>
 
-		<groupedStore name="staffbyaddress" from="DVDS-staff" key="address_id"/>
+		<groupedStore name="staffbyaddress" from="staff" key="address_id"/>
 		<joinGrouped name="staffwithaddress" from="staffbyaddress" with="addresswithcity" to="@STAFF"/>
 	</direct>
 </joins>

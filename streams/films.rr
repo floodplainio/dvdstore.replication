@@ -1,0 +1,14 @@
+|>database(resource='dvd',schema='public',table='film')
+	->joinWith(|>database(resource='dvd',schema='public',table='film_category')
+					->set(last_update=null)
+					->joinRemote(key=ToString([category_id]),
+						|>database(resource='dvd',schema='public',table='category')
+					)
+					->set(categoryname=[@name]))
+				,into='categories')
+	->set(categories=[@categories/])
+	->sink(connector='replication',collection='film','@FILM')
+
+
+|>database(resource='dvd',schema='public',table='actor')
+	->sink(connector='replication',collection='film','@ACTOR')

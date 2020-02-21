@@ -1,3 +1,5 @@
 <joins>
- 	<processor name="debezium" source="bare" group="pg7" appendTenant="false"  destination="DVDS-${table}"/> 
+	<direct>
+	 	<processor name="debezium" source="bare" group="pg7" appendTenant="false"  destination="${table}"/> 
+	</direct>
 </joins>
